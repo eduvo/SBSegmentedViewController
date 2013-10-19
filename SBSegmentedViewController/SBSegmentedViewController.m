@@ -113,7 +113,7 @@ NSInteger const DefaultSegmentIndex = 0;
         self.hasAppeared = YES;
         UIViewController *currentViewController = self.viewControllers[self.currentSelectedIndex];
 
-        currentViewController.view.frame = self.view.frame;
+        currentViewController.view.frame = self.view.bounds;
         [self.view addSubview:currentViewController.view];
 
         [currentViewController didMoveToParentViewController:self];
@@ -187,7 +187,7 @@ NSInteger const DefaultSegmentIndex = 0;
 	[self stopObservingViewController:oldViewController];
 
 	UIViewController *newViewController = self.viewControllers[segmentedControl.selectedSegmentIndex];
-	newViewController.view.frame = self.view.frame;
+	newViewController.view.frame = self.view.bounds;
 
 	[self transitionFromViewController:oldViewController
 					  toViewController:newViewController
