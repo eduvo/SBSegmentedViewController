@@ -195,14 +195,12 @@ NSInteger const DefaultSegmentIndex = 0;
 							   options:UIViewAnimationOptionTransitionNone
 							animations:nil
 							completion:^(BOOL finished) {
-								if (finished) {
 									[newViewController didMoveToParentViewController:self];
 
 									[self updateBarsForViewController:newViewController];
 									[self observeViewController:newViewController];
 
 									self.currentSelectedIndex = segmentedControl.selectedSegmentIndex;
-								}
 							}];
 }
 
