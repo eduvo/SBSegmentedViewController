@@ -219,8 +219,16 @@ NSInteger const DefaultSegmentIndex = 0;
 }
 
 - (void)stopObservingViewController:(UIViewController *)viewController {
-	[self.viewControllers[self.currentSelectedIndex] removeObserver:self forKeyPath:@"title"];
-	[self.viewControllers[self.currentSelectedIndex] removeObserver:self forKeyPath:@"toolbarItems"];
+	if(self.currentSelectedIndex >= self.viewControllers.count)
+		return;
+	
+	@try {
+		[self.viewControllers[self.currentSelectedIndex] removeObserver:self forKeyPath:@"title"];
+		[self.viewControllers[self.currentSelectedIndex] removeObserver:self forKeyPath:@"toolbarItems"];
+	}
+	@catch (NSException *exception) {
+		
+	}
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
